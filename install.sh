@@ -2,8 +2,13 @@
 
 # install system deps
 if [ $(which apt-get) ]; then
-  echo "installing deps for ubuntu"
-  sudo apt-get -y install git curl python python-virtualenv python-dev build-essential pkg-config zlib1g-dev libglib2.0-dev libpixman-1-dev qemu-kvm
+    if [ $(lsb_release -i | grep "Distributor ID" | cut -d ":" -f2 | tr -d [:space:]) == "Kali" ]; then
+        echo "installing deps for kali linux"
+        sudo apt-get -y install git curl python virtualenv python-dev build-essential pkg-config zlib1g-dev libglib2.0-dev libpixman-1-dev libtool libfdt1 libfdt-dev qemu-kvm qemu
+    else
+        echo "installing deps for ubuntu"
+        sudo apt-get -y install git curl python python-virtualenv python-dev build-essential pkg-config zlib1g-dev libglib2.0-dev libpixman-1-dev qemu-kvm
+    fi
 else
   echo "*** You'll need to install Ubuntu or get a working build env for qemu and python yourself ***"
 fi
@@ -43,4 +48,3 @@ echo "  Check out README for more info"
 echo "  Or just dive in with 'qira /bin/ls'"
 echo "  And point Chrome to localhost:3002"
 echo "    ~geohot"
-
