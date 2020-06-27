@@ -679,8 +679,6 @@ static int dev_major_minor(const char *devpath,
  */
 static void build_fs_mount_list_from_mtab(FsMountList *mounts, Error **errp)
 {
-    static int dev_major_minor(const char *devpath, unsigned int *devmajor,
-			unsigned int *devminor);
     struct mntent *ment;
     FsMount *mount;
     char const *mtab = "/proc/self/mounts";
