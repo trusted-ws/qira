@@ -4,7 +4,7 @@
 if [ $(which apt-get) ]; then
     if [ $(lsb_release -i | grep "Distributor ID" | cut -d ":" -f2 | tr -d [:space:]) == "Kali" ]; then
         echo "installing deps for kali linux"
-        sudo apt-get -y install git curl python virtualenv python-dev build-essential pkg-config zlib1g-dev libglib2.0-dev libpixman-1-dev libtool libfdt1 libfdt-dev qemu-kvm qemu
+        sudo apt-get -y install git curl python virtualenv python-dev build-essential pkg-config zlib1g-dev libglib2.0-dev libpixman-1-dev libtool libfdt1 libfdt-dev qemu-kvm qemu libjpeg-dev zlib1g-dev
     else
         echo "installing deps for ubuntu"
         sudo apt-get -y install git curl python python-virtualenv python-dev build-essential pkg-config zlib1g-dev libglib2.0-dev libpixman-1-dev qemu-kvm
